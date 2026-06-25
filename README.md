@@ -207,7 +207,7 @@ This project deploys cleanly on Railway as two services from the same GitHub rep
 
 | Railway service | Root directory | Dockerfile |
 |---|---|---|
-| Backend | repository root | `Dockerfile.backend` |
+| Backend | repository root | `Dockerfile` |
 | Frontend | `frontend` | `frontend/Dockerfile` |
 
 Backend environment variables:
