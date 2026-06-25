@@ -214,7 +214,7 @@ Backend environment variables:
 
 ```env
 APP_ENV=production
-DATABASE_URL=sqlite:////app/data_runtime/supportbench.db
+DATABASE_URL=${{Postgres.DATABASE_URL}}
 SUPPORTBENCH_DATA_DIR=/app/data
 
 USE_REAL_MODELS=true
@@ -239,11 +239,7 @@ EVAL_JUDGE_MODEL=gpt-5.4-nano
 EVAL_JUDGE_PROMPT_VERSION=answer-judge-v1
 ```
 
-Attach a Railway Volume to the backend service at:
-
-```text
-/app/data_runtime
-```
+Railway's Postgres value usually starts with `postgresql://`. The backend normalizes it to SQLAlchemy's `postgresql+psycopg://` driver internally, so the Railway Postgres variable reference can be used directly.
 
 Frontend environment variable:
 
