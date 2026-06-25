@@ -1,0 +1,452 @@
+[
+  {
+    "id": "q_001",
+    "question": "Can I get a refund after buying an annual plan?",
+    "reference_answer": "Annual plans are refundable within 14 days of purchase if workspace usage is below 100 automation runs and 5 GB of storage.",
+    "expected_doc": "billing_refunds.md",
+    "expected_section": "Refund Policy",
+    "tags": ["billing", "refund", "annual"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_002",
+    "question": "Are monthly plans refundable after the billing cycle starts?",
+    "reference_answer": "Monthly plans are not refundable after the billing cycle starts unless support confirms a duplicate charge.",
+    "expected_doc": "billing_refunds.md",
+    "expected_section": "Refund Policy",
+    "tags": ["billing", "refund", "monthly"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_003",
+    "question": "How long does support take to review duplicate charges?",
+    "reference_answer": "Duplicate charge reviews usually take three to five business days after payment processor transaction IDs are verified.",
+    "expected_doc": "billing_refunds.md",
+    "expected_section": "Duplicate Charges",
+    "tags": ["billing", "duplicate-charge"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_004",
+    "question": "What happens after a payment fails?",
+    "reference_answer": "The account stays active for a seven-day grace period. Notices are sent on day one, day three, and day six, then the workspace becomes read-only if payment is not updated.",
+    "expected_doc": "billing_refunds.md",
+    "expected_section": "Failed Payments",
+    "tags": ["billing", "payment-failure"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_005",
+    "question": "Can I apply a tax ID change to an invoice that was already generated?",
+    "reference_answer": "No. Tax ID changes apply only to future invoices and cannot be applied retroactively.",
+    "expected_doc": "billing_refunds.md",
+    "expected_section": "Tax Invoices",
+    "tags": ["billing", "tax"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_006",
+    "question": "When does cancellation take effect if I cancel my subscription?",
+    "reference_answer": "Cancellation takes effect at the end of the current billing period, and the workspace remains usable until the paid period ends.",
+    "expected_doc": "cancellations.md",
+    "expected_section": "Cancel Subscription",
+    "tags": ["cancellation", "billing"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_007",
+    "question": "Can an enterprise workspace cancel from the self-service billing page?",
+    "reference_answer": "No. Enterprise contracts follow the signed order form, and self-service cancellation is not available for enterprise workspaces.",
+    "expected_doc": "cancellations.md",
+    "expected_section": "Enterprise Cancellation",
+    "tags": ["enterprise", "cancellation"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_008",
+    "question": "How long can a cancelled workspace be reactivated without data loss?",
+    "reference_answer": "Cancelled workspaces can be reactivated within 30 days without data loss.",
+    "expected_doc": "cancellations.md",
+    "expected_section": "Reactivation",
+    "tags": ["cancellation", "reactivation"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_009",
+    "question": "What blocks a downgrade if the workspace is above lower plan limits?",
+    "reference_answer": "Admins must reduce users, storage, or automation usage before the downgrade can be completed.",
+    "expected_doc": "cancellations.md",
+    "expected_section": "Downgrades",
+    "tags": ["downgrade", "limits"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_010",
+    "question": "How long are password reset links valid?",
+    "reference_answer": "Password reset links expire after 30 minutes and can be used only once.",
+    "expected_doc": "account_security.md",
+    "expected_section": "Password Reset",
+    "tags": ["security", "password"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_011",
+    "question": "Which plans support multi-factor authentication?",
+    "reference_answer": "Multi-factor authentication is available on Pro and Enterprise plans.",
+    "expected_doc": "account_security.md",
+    "expected_section": "Multi-Factor Authentication",
+    "tags": ["security", "mfa", "plans"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_012",
+    "question": "Can users revoke their own active sessions?",
+    "reference_answer": "Yes. Users can view and revoke active sessions from Account > Security > Active Sessions.",
+    "expected_doc": "account_security.md",
+    "expected_section": "Session Management",
+    "tags": ["security", "sessions"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_013",
+    "question": "Which identity protocol is supported for SSO?",
+    "reference_answer": "Single sign-on supports SAML 2.0 identity providers and is available only on Enterprise plans.",
+    "expected_doc": "account_security.md",
+    "expected_section": "SSO",
+    "tags": ["security", "sso"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_014",
+    "question": "What is the API rate limit for Free workspaces?",
+    "reference_answer": "Free workspaces are limited to 60 API requests per minute.",
+    "expected_doc": "api_limits.md",
+    "expected_section": "Rate Limits",
+    "tags": ["api", "limits", "free"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_015",
+    "question": "What is the API rate limit for Pro workspaces?",
+    "reference_answer": "Pro workspaces are limited to 600 API requests per minute.",
+    "expected_doc": "api_limits.md",
+    "expected_section": "Rate Limits",
+    "tags": ["api", "limits", "pro"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_016",
+    "question": "What should API clients do after receiving HTTP 429?",
+    "reference_answer": "Clients should use exponential backoff and retry after the time specified in the Retry-After header.",
+    "expected_doc": "api_limits.md",
+    "expected_section": "Burst Behavior",
+    "tags": ["api", "429", "retry"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_017",
+    "question": "Are API token values shown again after creation?",
+    "reference_answer": "No. API token values are shown only once when created.",
+    "expected_doc": "api_limits.md",
+    "expected_section": "API Tokens",
+    "tags": ["api", "tokens", "security"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_018",
+    "question": "When is a webhook endpoint automatically disabled?",
+    "reference_answer": "A webhook endpoint is disabled automatically after 20 consecutive delivery failures.",
+    "expected_doc": "api_limits.md",
+    "expected_section": "Webhooks",
+    "tags": ["api", "webhooks"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_019",
+    "question": "How long is a deleted workspace recoverable?",
+    "reference_answer": "Deleted workspaces enter a 30-day recovery window during which owners can request restoration.",
+    "expected_doc": "data_retention.md",
+    "expected_section": "Deleted Workspaces",
+    "tags": ["data-retention", "deleted-workspace"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_020",
+    "question": "How long are encrypted backups retained?",
+    "reference_answer": "Encrypted backups are retained for 35 days.",
+    "expected_doc": "data_retention.md",
+    "expected_section": "Backups",
+    "tags": ["data-retention", "backups"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_021",
+    "question": "Do data exports include API token values?",
+    "reference_answer": "No. Data exports do not include secrets, API token values, or deleted user passwords.",
+    "expected_doc": "data_retention.md",
+    "expected_section": "Data Export",
+    "tags": ["data-export", "security"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_022",
+    "question": "Can enterprise customers request regional data storage after onboarding without a migration?",
+    "reference_answer": "No. Region changes after onboarding require a migration window scheduled with support.",
+    "expected_doc": "data_retention.md",
+    "expected_section": "Regional Storage",
+    "tags": ["enterprise", "regional-storage"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_023",
+    "question": "What does the Free plan include?",
+    "reference_answer": "Free plans include 3 users, 2 projects, and 500 automation runs per month.",
+    "expected_doc": "subscriptions.md",
+    "expected_section": "Plan Limits",
+    "tags": ["plans", "free"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_024",
+    "question": "How many automation runs does the Pro plan include each month?",
+    "reference_answer": "Pro plans include 25,000 automation runs per month.",
+    "expected_doc": "subscriptions.md",
+    "expected_section": "Plan Limits",
+    "tags": ["plans", "pro", "automation"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_025",
+    "question": "How much storage does the Pro plan include?",
+    "reference_answer": "Pro plans include 100 GB of storage.",
+    "expected_doc": "subscriptions.md",
+    "expected_section": "Storage Limits",
+    "tags": ["plans", "storage"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_026",
+    "question": "When do admins get usage notifications?",
+    "reference_answer": "Workspace admins receive email notifications at 80%, 95%, and 100% of monthly automation usage.",
+    "expected_doc": "subscriptions.md",
+    "expected_section": "Usage Notifications",
+    "tags": ["usage", "notifications"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_027",
+    "question": "Does removing a Pro user create a prorated refund?",
+    "reference_answer": "No. Removing a user stops future seat billing but does not create a prorated refund for the current billing period.",
+    "expected_doc": "subscriptions.md",
+    "expected_section": "Seat Billing",
+    "tags": ["billing", "seats"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_028",
+    "question": "Which support channel do Free customers receive?",
+    "reference_answer": "Free customers receive community support.",
+    "expected_doc": "support_sla.md",
+    "expected_section": "Support Channels",
+    "tags": ["support", "free"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_029",
+    "question": "What is the Pro support first-response target?",
+    "reference_answer": "Pro support targets a first response within one business day.",
+    "expected_doc": "support_sla.md",
+    "expected_section": "Response Times",
+    "tags": ["support", "sla", "pro"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_030",
+    "question": "What counts as a priority-one incident?",
+    "reference_answer": "Priority-one incidents include full production outage, data loss risk, or security incident.",
+    "expected_doc": "support_sla.md",
+    "expected_section": "Priority Levels",
+    "tags": ["support", "priority"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_031",
+    "question": "How can Enterprise customers request escalation?",
+    "reference_answer": "Enterprise customers can request escalation through their shared Slack channel or designated customer success manager, with a business impact summary.",
+    "expected_doc": "support_sla.md",
+    "expected_section": "Escalation",
+    "tags": ["support", "enterprise", "escalation"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_032",
+    "question": "Which plans can use the Slack integration?",
+    "reference_answer": "The Slack integration is available on Pro and Enterprise plans.",
+    "expected_doc": "integrations.md",
+    "expected_section": "Slack Integration",
+    "tags": ["integrations", "slack"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_033",
+    "question": "What does the Salesforce integration require?",
+    "reference_answer": "The Salesforce integration requires OAuth authorization from a Salesforce admin and is available on Enterprise plans.",
+    "expected_doc": "integrations.md",
+    "expected_section": "Salesforce Integration",
+    "tags": ["integrations", "salesforce"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_034",
+    "question": "How often does calendar sync run?",
+    "reference_answer": "Google Calendar and Microsoft Outlook Calendar sync runs every 15 minutes.",
+    "expected_doc": "integrations.md",
+    "expected_section": "Calendar Integration",
+    "tags": ["integrations", "calendar"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_035",
+    "question": "What happens when an integration authorization fails?",
+    "reference_answer": "The workspace admin receives an email and the integration status changes to Action Required.",
+    "expected_doc": "integrations.md",
+    "expected_section": "Integration Failures",
+    "tags": ["integrations", "failure"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_036",
+    "question": "Do failed workflow runs count toward monthly automation usage?",
+    "reference_answer": "Failed runs count toward monthly usage if the workflow started execution.",
+    "expected_doc": "automation.md",
+    "expected_section": "Workflow Runs",
+    "tags": ["automation", "usage"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_037",
+    "question": "How long is workflow run history retained on Pro?",
+    "reference_answer": "Workflow run history is retained for 90 days on Pro plans.",
+    "expected_doc": "automation.md",
+    "expected_section": "Run History",
+    "tags": ["automation", "history", "pro"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_038",
+    "question": "Are workflow secret values returned through the API after creation?",
+    "reference_answer": "No. Secret values are never returned through the API after creation.",
+    "expected_doc": "automation.md",
+    "expected_section": "Secrets",
+    "tags": ["automation", "secrets"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_039",
+    "question": "When are workflows disabled automatically?",
+    "reference_answer": "Workflows are disabled automatically after 10 consecutive failures caused by configuration errors.",
+    "expected_doc": "automation.md",
+    "expected_section": "Disabled Workflows",
+    "tags": ["automation", "failure"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_040",
+    "question": "Which role can manage billing and workspace deletion?",
+    "reference_answer": "Owners manage billing and workspace deletion.",
+    "expected_doc": "access_control.md",
+    "expected_section": "Roles",
+    "tags": ["access-control", "roles"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_041",
+    "question": "Can Free plan projects be restricted to specific members?",
+    "reference_answer": "No. Free plan projects are visible to all workspace members.",
+    "expected_doc": "access_control.md",
+    "expected_section": "Project Permissions",
+    "tags": ["access-control", "projects", "free"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_042",
+    "question": "Which plans support guest users?",
+    "reference_answer": "Guest users are available on Enterprise plans.",
+    "expected_doc": "access_control.md",
+    "expected_section": "Guest Users",
+    "tags": ["access-control", "guest", "enterprise"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_043",
+    "question": "What events do audit logs record?",
+    "reference_answer": "Audit logs record user invites, role changes, billing changes, API token creation, and security setting updates.",
+    "expected_doc": "access_control.md",
+    "expected_section": "Audit Logs",
+    "tags": ["access-control", "audit"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_044",
+    "question": "Does the product support HIPAA business associate agreements?",
+    "reference_answer": "The provided support docs do not state whether HIPAA business associate agreements are supported.",
+    "expected_doc": null,
+    "expected_section": null,
+    "tags": ["unknown", "compliance"],
+    "should_refuse": true
+  },
+  {
+    "id": "q_045",
+    "question": "What is the uptime SLA percentage for Enterprise?",
+    "reference_answer": "The provided support docs do not specify an uptime SLA percentage.",
+    "expected_doc": null,
+    "expected_section": null,
+    "tags": ["unknown", "sla"],
+    "should_refuse": true
+  },
+  {
+    "id": "q_046",
+    "question": "Can customers pay by cryptocurrency?",
+    "reference_answer": "The provided support docs do not mention cryptocurrency payment support.",
+    "expected_doc": null,
+    "expected_section": null,
+    "tags": ["unknown", "billing"],
+    "should_refuse": true
+  },
+  {
+    "id": "q_047",
+    "question": "Is there an Android mobile app?",
+    "reference_answer": "The provided support docs do not mention an Android mobile app.",
+    "expected_doc": null,
+    "expected_section": null,
+    "tags": ["unknown", "mobile"],
+    "should_refuse": true
+  },
+  {
+    "id": "q_048",
+    "question": "Do Enterprise audit logs include role changes and API token creation?",
+    "reference_answer": "Yes. Audit logs record role changes and API token creation.",
+    "expected_doc": "access_control.md",
+    "expected_section": "Audit Logs",
+    "tags": ["access-control", "audit", "enterprise"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_049",
+    "question": "What support target applies to enterprise priority-one incidents?",
+    "reference_answer": "Enterprise priority-one incidents target a first response within one hour.",
+    "expected_doc": "support_sla.md",
+    "expected_section": "Response Times",
+    "tags": ["support", "enterprise", "priority"],
+    "should_refuse": false
+  },
+  {
+    "id": "q_050",
+    "question": "Can Slack notifications be configured per project?",
+    "reference_answer": "Yes. Slack notifications can be configured per project.",
+    "expected_doc": "integrations.md",
+    "expected_section": "Slack Integration",
+    "tags": ["integrations", "slack", "notifications"],
+    "should_refuse": false
+  }
+]

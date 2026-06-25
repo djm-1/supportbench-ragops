@@ -1,0 +1,46 @@
+{
+  "dataset_name": "The Souled Store support knowledge base",
+  "generated_at": "2026-06-25T00:00:00.000Z",
+  "source_pages": [
+    {
+      "url": "https://www.thesouledstore.com/faqs",
+      "title": "FAQ | Refund And Cancellation Policy",
+      "role": "primary_faq"
+    },
+    {
+      "url": "https://www.thesouledstore.com/about-us",
+      "title": "About Us | India's Biggest Popculture Website",
+      "role": "brand_context"
+    }
+  ],
+  "source_page_count": 2,
+  "faq_pair_count": 59,
+  "support_documents": [
+    {
+      "title": "Shipping and tracking policy",
+      "document": "shipping_and_tracking_policy.md"
+    },
+    {
+      "title": "Returns, exchange, and refund policy",
+      "document": "returns_exchange_refund_policy.md"
+    },
+    {
+      "title": "Orders and payment policy",
+      "document": "orders_payment_policy.md"
+    },
+    {
+      "title": "Gift cards and membership policy",
+      "document": "gift_cards_membership_policy.md"
+    },
+    {
+      "title": "Store, contact, and support policy",
+      "document": "store_contact_support_policy.md"
+    },
+    {
+      "title": "About The Souled Store",
+      "document": "about_us.md"
+    }
+  ],
+  "support_doc_count": 6,
+  "eval_question_count": 50
+}
