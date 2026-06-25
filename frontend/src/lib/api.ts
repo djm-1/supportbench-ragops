@@ -239,10 +239,21 @@ export type DashboardHistory = {
   config_performance: HistoryConfigPerformanceRow[];
 };
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const configuredApiBase = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "");
+const API_BASE =
+  configuredApiBase || (process.env.NODE_ENV === "development" ? "http://localhost:8000" : "");
+
+function apiUrl(path: string): string {
+  if (!API_BASE) {
+    throw new Error(
+      "NEXT_PUBLIC_API_BASE_URL is not configured. Set it to the deployed backend URL before building the frontend."
+    );
+  }
+  return `${API_BASE}${path}`;
+}
 
 export async function fetchDashboardSummary(): Promise<DashboardSummary> {
-  const response = await fetch(`${API_BASE}/dashboard/summary`, { cache: "no-store" });
+  const response = await fetch(apiUrl("/dashboard/summary"), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch dashboard summary"));
   }
@@ -250,7 +261,7 @@ export async function fetchDashboardSummary(): Promise<DashboardSummary> {
 }
 
 export async function fetchDashboardHistory(): Promise<DashboardHistory> {
-  const response = await fetch(`${API_BASE}/dashboard/history`, { cache: "no-store" });
+  const response = await fetch(apiUrl("/dashboard/history"), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch dashboard history"));
   }
@@ -263,7 +274,7 @@ export async function fetchDashboardHistory(): Promise<DashboardHistory> {
 }
 
 export async function fetchModels(): Promise<ModelInfo[]> {
-  const response = await fetch(`${API_BASE}/models`, { cache: "no-store" });
+  const response = await fetch(apiUrl("/models"), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch model catalog"));
   }
@@ -272,7 +283,7 @@ export async function fetchModels(): Promise<ModelInfo[]> {
 }
 
 export async function fetchRetrievalStatus(): Promise<RetrievalStatus> {
-  const response = await fetch(`${API_BASE}/retrieval/status`, { cache: "no-store" });
+  const response = await fetch(apiUrl("/retrieval/status"), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch retrieval status"));
   }
@@ -280,7 +291,7 @@ export async function fetchRetrievalStatus(): Promise<RetrievalStatus> {
 }
 
 export async function ingestDocuments() {
-  const response = await fetch(`${API_BASE}/documents/ingest`, { method: "POST" });
+  const response = await fetch(apiUrl("/documents/ingest"), { method: "POST" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to ingest documents"));
   }
@@ -288,7 +299,7 @@ export async function ingestDocuments() {
 }
 
 export async function startIngestion(): Promise<JobProgress> {
-  const response = await fetch(`${API_BASE}/documents/ingest/start`, { method: "POST" });
+  const response = await fetch(apiUrl("/documents/ingest/start"), { method: "POST" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to start ingestion"));
   }
@@ -296,7 +307,7 @@ export async function startIngestion(): Promise<JobProgress> {
 }
 
 export async function runBenchmark(payload: EvalRunPayload) {
-  const response = await fetch(`${API_BASE}/eval/run`, {
+  const response = await fetch(apiUrl("/eval/run"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -310,7 +321,7 @@ export async function runBenchmark(payload: EvalRunPayload) {
 }
 
 export async function startBenchmark(payload: EvalRunPayload): Promise<JobProgress> {
-  const response = await fetch(`${API_BASE}/eval/run/start`, {
+  const response = await fetch(apiUrl("/eval/run/start"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -322,7 +333,7 @@ export async function startBenchmark(payload: EvalRunPayload): Promise<JobProgre
 }
 
 export async function fetchJob(jobId: string): Promise<JobProgress> {
-  const response = await fetch(`${API_BASE}/jobs/${jobId}`, { cache: "no-store" });
+  const response = await fetch(apiUrl(`/jobs/${jobId}`), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch job status"));
   }
@@ -330,7 +341,7 @@ export async function fetchJob(jobId: string): Promise<JobProgress> {
 }
 
 export async function fetchEvalQuestions(): Promise<EvalQuestion[]> {
-  const response = await fetch(`${API_BASE}/eval/questions`, { cache: "no-store" });
+  const response = await fetch(apiUrl("/eval/questions"), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch eval questions"));
   }
@@ -338,7 +349,7 @@ export async function fetchEvalQuestions(): Promise<EvalQuestion[]> {
 }
 
 export async function fetchRunDetails(runId: number): Promise<RunDetails> {
-  const response = await fetch(`${API_BASE}/eval/runs/${runId}`, { cache: "no-store" });
+  const response = await fetch(apiUrl(`/eval/runs/${runId}`), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch run details"));
   }
@@ -346,11 +357,11 @@ export async function fetchRunDetails(runId: number): Promise<RunDetails> {
 }
 
 export function runExportUrl(runId: number): string {
-  return `${API_BASE}/eval/runs/${runId}/export.csv`;
+  return apiUrl(`/eval/runs/${runId}/export.csv`);
 }
 
 export async function fetchTrace(traceId: string) {
-  const response = await fetch(`${API_BASE}/traces/${traceId}`, { cache: "no-store" });
+  const response = await fetch(apiUrl(`/traces/${traceId}`), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await readError(response, "Failed to fetch trace"));
   }
