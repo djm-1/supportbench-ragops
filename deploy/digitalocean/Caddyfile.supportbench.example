@@ -1,0 +1,7 @@
+# Add this block to ~/QuotePilot/deploy/digitalocean/Caddyfile on the droplet.
+# The supportbench-api service joins QuotePilot's existing digitalocean_default network.
+
+supportbench.duckdns.org {
+	encode zstd gzip
+	reverse_proxy supportbench-api:8000
+}

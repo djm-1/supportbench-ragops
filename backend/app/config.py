@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     database_url: str = "sqlite:///./supportbench.db"
     supportbench_data_dir: Optional[str] = None
+    cors_allowed_origins: str = "*"
     use_real_models: bool = False
     groq_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
@@ -48,6 +49,17 @@ class Settings(BaseSettings):
         if self.supportbench_data_dir:
             return Path(self.supportbench_data_dir)
         return Path(__file__).resolve().parents[2] / "data"
+
+    @property
+    def cors_origins(self) -> list[str]:
+        origins = self.cors_allowed_origins.strip()
+        if not origins or origins == "*":
+            return ["*"]
+        return [origin.strip().rstrip("/") for origin in origins.split(",") if origin.strip()]
+
+    @property
+    def cors_allow_credentials(self) -> bool:
+        return "*" not in self.cors_origins
 
 
 settings = Settings()

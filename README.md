@@ -258,6 +258,59 @@ Railway smoke test:
 5. Run a 1-3 question benchmark first.
 6. Confirm Decision, Test Cases, Trace, and CSV export work.
 
+## DigitalOcean + Vercel Deployment
+
+For a low-cost portfolio deployment, run only the FastAPI backend on the existing QuotePilot DigitalOcean droplet and deploy the Next.js frontend to Vercel.
+
+Recommended production split:
+
+| Platform | Runs |
+|---|---|
+| DigitalOcean droplet | Caddy, shared Postgres, SupportBench FastAPI backend |
+| Vercel | SupportBench Next.js frontend |
+
+The droplet deployment files live in:
+
+```text
+deploy/digitalocean/
+```
+
+This setup is designed to reuse QuotePilot's existing Caddy and Postgres containers instead of starting a second database. SupportBench gets its own database and user inside the same Postgres container.
+
+Backend steps:
+
+1. Create a DuckDNS subdomain such as `supportbench.duckdns.org` and point it to the droplet IP.
+2. Create a `supportbench` database/user in the existing QuotePilot Postgres container.
+3. Copy `deploy/digitalocean/.env.example` to `deploy/digitalocean/.env`.
+4. Add the SupportBench route from `deploy/digitalocean/Caddyfile.supportbench.example` to QuotePilot's Caddyfile.
+5. Start the backend with `docker compose up -d --build` from `deploy/digitalocean`.
+6. Verify `https://supportbench.duckdns.org/health`.
+
+Frontend steps on Vercel:
+
+```text
+Root Directory: frontend
+Framework Preset: Next.js
+Build Command: npm run build
+Output Directory: .next
+```
+
+Set:
+
+```env
+NEXT_PUBLIC_API_BASE_URL=https://supportbench.duckdns.org
+```
+
+For the first portfolio deployment, keep the backend in deterministic/local mode:
+
+```env
+USE_REAL_MODELS=false
+USE_PINECONE=false
+EVAL_JUDGE_PROVIDER=deterministic
+```
+
+That mode still demonstrates ingestion, hybrid retrieval, benchmarking, traces, decision dashboards, and CSV export without external model cost or API rate-limit failures.
+
 ## Local Run
 
 Backend:
